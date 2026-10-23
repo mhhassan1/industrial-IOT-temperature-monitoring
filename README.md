@@ -2,6 +2,10 @@
 
 > **An interactive, edge-first telemetry dashboard with synthetic sensors, persistent readings, configurable alerts, CSV export, and optional ChirpStack MQTT ingestion.**
 
+**[▶ OPEN THE LIVE INTERACTIVE DEMO](https://mhhassan1.github.io/industrial-IOT-temperature-monitoring/)** · **[Engineering case study](docs/engineering-case-study.md)** · **[System architecture](docs/architecture.md)**
+
+[![Python tests](https://github.com/mhhassan1/industrial-IOT-temperature-monitoring/actions/workflows/ci.yml/badge.svg)](https://github.com/mhhassan1/industrial-IOT-temperature-monitoring/actions/workflows/ci.yml) [![Browser demo tests](https://github.com/mhhassan1/industrial-IOT-temperature-monitoring/actions/workflows/demo-ci.yml/badge.svg)](https://github.com/mhhassan1/industrial-IOT-temperature-monitoring/actions/workflows/demo-ci.yml) [![Website deployment](https://github.com/mhhassan1/industrial-IOT-temperature-monitoring/actions/workflows/pages-demo.yml/badge.svg)](https://github.com/mhhassan1/industrial-IOT-temperature-monitoring/actions/workflows/pages-demo.yml)
+
 **Python 3.11+** · **SQLite** · **REST API** · **LoRaWAN/MQTT adapter** · **Docker Compose** · **Automated tests**
 
 ![Synthetic EdgeWatch dashboard](assets/edgewatch-dashboard.png)
@@ -26,6 +30,19 @@ It was motivated by hands-on validation of a private two-node wireless temperatu
 | Scenario testing | Synthetic heat excursions and device-outage buttons |
 | Optional real telemetry adapter | ChirpStack v4 MQTT JSON uplink consumer (requires decoded fields) |
 | Developer experience | Standard-library demo, Docker Compose, unit/API tests, GitHub Actions |
+
+## Try the live demo in 30 seconds
+
+**[Launch EdgeWatch in your browser →](https://mhhassan1.github.io/industrial-IOT-temperature-monitoring/)** — no account, downloads, installation, backend, or actual sensors needed.
+
+1. Watch simulated NODE-A and NODE-B report **10 probe temperatures plus 2 ambient channels**.
+2. Scroll to **Scenario lab** (or use its navigation link) and select **Simulate heat excursion**. Watch NODE-A's Probe 3 raise a critical alarm.
+3. Select **Simulate signal loss** and see NODE-B stop reporting and transition offline.
+4. Select **Restore normal operation**, explore the time-series chart, then choose **Export CSV** to download fabricated readings.
+
+**What this proves:** browser-side telemetry simulation, alarm state transitions, missing-uplink detection, time-series visualization, and structured export. **What it does not prove:** a production deployment, physical wireless performance, real-time alarm delivery, or safety certification.
+
+The live website is a self-contained **JavaScript simulation**. The separately runnable **Python/SQLite backend** in this repository is a deeper engineering implementation; GitHub Pages does not run the Python service.
 
 ## Interactive browser demo (no installation)
 
@@ -143,6 +160,7 @@ industrial-iot-temperature-monitoring/
 ├── docs/                   # Architecture, case study, deployment, testing
 ├── examples/               # Fabricated events and sample CSV
 ├── tests/                  # Unit and HTTP API tests
+├── demo/                   # Deployed static JS simulation and tests
 ├── assets/                 # Dashboard screenshot with synthetic data
 ├── compose.yaml            # Local-only demo container
 ├── Dockerfile
