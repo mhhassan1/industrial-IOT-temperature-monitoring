@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09131f">
+  <meta name="description" content="EdgeWatch — a fully synthetic, interactive Industrial IoT telemetry demo featuring live trends, temperature alarms, and offline detection.">
+  <title>EdgeWatch · Live Industrial IoT Demo</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.mjs"></script>
+</head>
+<body>
+<svg class="svg-sprite" width="0" height="0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><polyline points="3 12 7 12 10 5 14 19 17 12 21 12"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2 21h20z"/><line x1="12" y1="9" x2="12" y2="14"/><circle cx="12" cy="17" r=".5" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 18v3h16v-3"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a2 2 0 0 0 .6-2.5l-.1-.4.1-.4a2 2 0 0 0-.6-2.5l-1.3-.9.1-1.7-2.4-1.5-1.5.7L12 4l-2.3 1.8-1.5-.7-2.4 1.5.1 1.7-1.3.9a2 2 0 0 0-.6 2.5l.1.4-.1.4a2 2 0 0 0 .6 2.5l1.3.9-.1 1.7 2.4 1.5 1.5-.7L12 20l2.3-1.8 1.5.7 2.4-1.5-.1-1.7z"/></symbol>
+  <symbol id="i-thermo" viewBox="0 0 24 24"><path d="M9 15V5a3 3 0 0 1 6 0v10a5 5 0 1 1-6 0z"/><path d="M12 9v9"/></symbol>
+  <symbol id="i-radio" viewBox="0 0 24 24"><circle cx="12" cy="16" r="2"/><path d="M7 11a7 7 0 0 1 10 0M3 7a13 13 0 0 1 18 0M12 18v3"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 6 4 9 8 11 4-2 8-5 8-11V5z"/><path d="m8 12 3 3 5-6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="m7 4 13 8-13 8z"/></symbol>
+  <symbol id="i-reset" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2-6m-2-3v5h5"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6m0-6-9 9M18 13v7H4V6h7"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
+</svg>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="identity"><div class="brand-mark"><svg><use href="#i-activity"/></svg></div><div><div class="brand-name">EDGE<span>WATCH</span></div><div class="brand-sub">INDUSTRIAL TELEMETRY LAB</div></div></div>
+    <div class="nav-caption">WORKSPACE</div>
+    <nav class="nav-list" aria-label="Dashboard navigation">
+      <a class="navlink active" href="#overview"><svg><use href="#i-grid"/></svg> Overview</a>
+      <a class="navlink" href="#nodes"><svg><use href="#i-radio"/></svg> Connected nodes <span class="nav-count">2</span></a>
+      <a class="navlink" href="#trends"><svg><use href="#i-activity"/></svg> Telemetry trends</a>
+      <a class="navlink" href="#events"><svg><use href="#i-alert"/></svg> Event history <span id="nav-alert" class="nav-count">0</span></a>
+      <a class="navlink" href="#controls"><svg><use href="#i-settings"/></svg> Scenario lab</a>
+    </nav>
+    <div class="sidebar-info">
+      <div class="sidebar-separator"></div>
+      <div class="info-title"><span class="status-dot"></span> BROWSER SIMULATION</div>
+      <p>No live hardware, private endpoints, or company data are connected to this demonstration.</p>
+      <a href="https://github.com/mhhassan1/industrial-IOT-temperature-monitoring" target="_blank" rel="noopener noreferrer" class="repository-link">VIEW PROJECT SOURCE <svg><use href="#i-external"/></svg></a>
+    </div>
+  </aside>
+  <main class="workspace" id="overview">
+    <header class="topline">
+      <div class="breadcrumb"><span>EDGEWATCH</span><span class="slash">/</span> <strong>OPERATIONS OVERVIEW</strong></div>
+      <div class="top-actions"><span id="clock" class="clock">—</span><span class="header-divider"></span><span class="simulation-pill"><span class="pulse-dot"></span> SIMULATION ONLINE</span></div>
+    </header>
+    <div class="dashboard-content">
+      <section class="intro">
+        <div class="intro-main"><div class="eyebrow"><span class="tagline-line"></span> SYSTEM CONTROL CENTER · DEMO ENVIRONMENT</div><h1>See the signal.<br><span>Understand the system.</span></h1><p>A hardware-free exploration of industrial IoT telemetry—from synthetic wireless sensor data to trends, alarms, and diagnostics.</p></div>
+        <div class="intro-controls"><button id="pause" class="btn btn-outline" type="button"><svg><use href="#i-pause"/></svg> <span>Pause simulation</span></button><button id="export" class="btn btn-mint" type="button"><svg><use href="#i-download"/></svg> Export CSV</button></div>
+      </section>
+      <div class="disclaimer"><div class="disclaimer-symbol">!</div><div><strong>SYNTHETIC DATA · PORTFOLIO DEMONSTRATION</strong><span>Everything on this page is simulated in your browser. Readings, radio values, and alarm scenarios are fictional. Not for safety-critical monitoring.</span></div><span class="disclaimer-chip">NO DEVICE ACCESS</span></div>
+      <section class="kpis" aria-label="Simulated system health">
+        <article class="kpi"><div class="kpi-top">ACTIVE NODES <svg><use href="#i-radio"/></svg></div><div id="kpi-nodes" class="kpi-number">2 <span>/ 2</span></div><div id="kpi-nodes-sub" class="kpi-sub good"><span class="tiny-dot"></span> All nodes reporting</div></article>
+        <article class="kpi"><div class="kpi-top">LIVE CHANNELS <svg><use href="#i-thermo"/></svg></div><div class="kpi-number">12<span> total</span></div><div class="kpi-sub">10 probes + 2 ambient</div></article>
+        <article class="kpi"><div class="kpi-top">PEAK TEMPERATURE <svg><use href="#i-activity"/></svg></div><div id="kpi-peak" class="kpi-number">22.8<span> °C</span></div><div id="kpi-peak-sub" class="kpi-sub">Across reporting probes</div></article>
+        <article class="kpi"><div class="kpi-top">ACTIVE ALERTS <svg><use href="#i-alert"/></svg></div><div id="kpi-alerts" class="kpi-number">0<span> active</span></div><div id="kpi-alerts-sub" class="kpi-sub good"><span class="tiny-dot"></span> All readings nominal</div></article>
+      </section>
+      <section id="nodes" class="section-block"><div class="section-heading"><div><div class="section-index">01 / TELEMETRY</div><h2>Connected sensor nodes <span class="section-hint">— synthetic stream</span></h2></div><span class="refresh-message"><span class="spinning-dot"></span> Browser-generated data · <span id="updated">just now</span></span></div>
+        <div class="node-grid" id="node-cards"></div>
+      </section>
+      <section id="trends" class="section-block trend-section"><div class="section-heading"><div><div class="section-index">02 / ANALYTICS</div><h2>Telemetry trends <span class="section-hint">— recent history</span></h2></div><div class="trend-filters"><label for="chart-node" class="sr-only">Choose node</label><select id="chart-node"><option value="NODE-A">NODE-A</option><option value="NODE-B">NODE-B</option></select><label for="chart-window" class="sr-only">History window</label><select id="chart-window"><option value="5">Last 5 min</option><option value="15" selected>Last 15 min</option><option value="30">Last 30 min</option></select></div></div>
+        <div class="trend-card"><div class="trend-topline"><div><div class="trend-name">Temperature profile <span id="trend-title-node">/ NODE-A</span></div><div class="trend-description">Five individual probes and the surrounding ambient sensor</div></div><div class="legend"><span><i class="dot legend-mint"></i> Probe 1</span><span><i class="dot legend-cyan"></i> Probe 3</span><span><i class="dot legend-lilac"></i> Ambient</span></div></div><svg id="trend-graph" viewBox="0 0 960 220" preserveAspectRatio="none" role="img" aria-label="Synthetic temperature history line chart"></svg><div class="axis-footer"><span id="chart-left">—</span><span>SIMULATED TIME (UTC)</span><span id="chart-right">—</span></div></div>
+      </section>
+      <section class="bottom-grid">
+        <div class="event-panel panel" id="events"><div class="panel-header"><div><div class="section-index">03 / INCIDENT LOG</div><h2>Event history</h2></div><span id="event-total" class="event-count">1 event</span></div><div id="event-list" class="event-list" aria-live="polite"></div></div>
+        <div class="scenario-panel panel" id="controls"><div class="panel-header"><div><div class="section-index">04 / EXPERIMENTS</div><h2>Scenario lab</h2></div><span class="lab-flag">INTERACTIVE</span></div><p class="panel-explain">Explore how an engineering monitoring application responds to abnormal conditions. Nothing affects real devices.</p>
+          <button id="heat" class="scenario-button" type="button"><span class="scenario-icon heat"><svg><use href="#i-thermo"/></svg></span><span class="scenario-copy"><strong>Simulate heat excursion</strong><small>Raise NODE-A / Probe 3 past the critical threshold</small></span><svg class="scenario-arrow"><use href="#i-arrow"/></svg></button>
+          <button id="outage" class="scenario-button" type="button"><span class="scenario-icon outage"><svg><use href="#i-radio"/></svg></span><span class="scenario-copy"><strong>Simulate signal loss</strong><small>Suppress NODE-B readings and trigger offline detection</small></span><svg class="scenario-arrow"><use href="#i-arrow"/></svg></button>
+          <button id="restore" class="scenario-button muted" type="button"><span class="scenario-icon restore"><svg><use href="#i-reset"/></svg></span><span class="scenario-copy"><strong>Restore normal operation</strong><small>Clear active scenarios and allow probes to recover</small></span><svg class="scenario-arrow"><use href="#i-arrow"/></svg></button>
+          <div class="settings-group"><div class="settings-label"><svg><use href="#i-settings"/></svg> ALERT CONFIGURATION <span>°C</span></div><div class="threshold-row"><label>Warning <input id="warning" type="number" step="1" min="10" max="110" value="32"></label><label>Critical <input id="critical" type="number" step="1" min="11" max="120" value="40"></label><button id="apply" type="button" class="apply-button">Apply</button></div><div id="settings-help" class="settings-help">Configurable demo thresholds · 2°C recovery hysteresis</div></div>
+        </div>
+      </section>
+      <section class="footer-feature"><div><svg><use href="#i-shield"/></svg><div><strong>Built to demonstrate engineering decisions, not production guarantees.</strong><p>Learn how telemetry processing, alarm state transitions, missed readings, and CSV reports fit together. This independent portfolio demo never contacts a gateway or mailbox.</p></div></div><a href="https://github.com/mhhassan1/industrial-IOT-temperature-monitoring" target="_blank" rel="noopener noreferrer">EXPLORE THE CODE <svg><use href="#i-arrow"/></svg></a></section>
+      <footer class="footer"><span>EDGEWATCH / SYSTEMS ENGINEERING PORTFOLIO</span><span>SIMULATION ONLY · NO REAL TELEMETRY · v1.1</span></footer>
+    </div>
+  </main>
+</div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

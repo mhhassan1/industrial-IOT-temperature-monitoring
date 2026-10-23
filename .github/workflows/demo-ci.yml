@@ -1,0 +1,31 @@
+name: EdgeWatch browser demo tests
+
+on:
+  push:
+    paths:
+      - 'demo/**'
+      - '.github/workflows/demo-ci.yml'
+  pull_request:
+    paths:
+      - 'demo/**'
+      - '.github/workflows/demo-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  demo-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: |
+          node --check demo/app.mjs
+          node --check demo/sim-engine.mjs
+      - name: Run simulation engine tests
+        run: node --test demo/tests/engine.test.mjs
