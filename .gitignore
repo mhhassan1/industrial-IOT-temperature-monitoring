@@ -1,0 +1,26 @@
+# Secrets, credentials, and local configs
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*secret*
+# Runtime data
+/data/
+*.sqlite3
+*.sqlite3-*
+*.db
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+.DS_Store
+.vscode/
+.idea/

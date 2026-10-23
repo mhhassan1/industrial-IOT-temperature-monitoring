@@ -1,0 +1,22 @@
+services:
+  dashboard:
+    build: .
+    ports:
+      - "127.0.0.1:8765:8765"
+    environment:
+      EDGEWATCH_MODE: demo
+      EDGEWATCH_HOST: 0.0.0.0
+      EDGEWATCH_DB: /data/edgewatch.sqlite3
+      STALE_SECONDS: 18
+      WARNING_C: 35
+      CRITICAL_C: 45
+    volumes:
+      - edgewatch_data:/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/healthz',timeout=2)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+volumes:
+  edgewatch_data:

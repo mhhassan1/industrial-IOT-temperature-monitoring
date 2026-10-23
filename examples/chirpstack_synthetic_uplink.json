@@ -1,0 +1,7 @@
+{
+  "time": "2026-01-01T12:00:00Z",
+  "deviceInfo": {"deviceName": "LAB-NODE-01", "devEui": "0000000000000001"},
+  "fPort": 16,
+  "object": {"probe_1_c": 22.1,"probe_2_c": 22.0,"probe_3_c": 22.3,"probe_4_c": 22.2,"probe_5_c": 21.9,"ambient_c": 22.4},
+  "rxInfo": [{"rssi": -58,"snr": 9.4}]
+}

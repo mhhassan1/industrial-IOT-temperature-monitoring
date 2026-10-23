@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#08111b">
+  <meta name="description" content="EdgeWatch industrial telemetry — a synthetic, local-first portfolio demonstration.">
+  <title>EdgeWatch | Industrial Telemetry</title>
+  <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-symbol">E</div><div><div class="brand-title">EDGEWATCH<span class="brand-dot">.</span></div><div class="brand-sub">INDUSTRIAL TELEMETRY</div></div></div>
+    <div class="nav-group-label">WORKSPACE</div>
+    <div class="nav-item active"><span class="nav-ico">▦</span> Overview</div>
+    <div class="nav-item"><span class="nav-ico">⌁</span> Telemetry</div>
+    <div class="nav-item"><span class="nav-ico">♧</span> Alert center</div>
+    <div class="nav-item"><span class="nav-ico">◷</span> Historical data</div>
+    <div class="sidebar-bottom">
+      <div class="mode-marker"><span class="pulse"></span> LOCAL DEMONSTRATION</div>
+      <p>All node identifiers, sensor readings and scenarios are synthetic. No workplace data.</p>
+      <span class="version">v1.0.0  /  LAB ENVIRONMENT</span>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="topbar"><div class="crumb">WORKSPACE <span>/</span> SYSTEM OVERVIEW</div><div class="top-right"><span class="top-online"><span class="pulse"></span> SYSTEM RUNNING</span><span id="clock">—</span></div></div>
+    <div class="content">
+      <div class="heading-row">
+        <div><div class="eyebrow">EDGE INFRASTRUCTURE / 001</div><h1>Temperature <em>intelligence.</em></h1><p class="subtitle">Real-time device telemetry, historical insight and event-driven monitoring at the edge.</p></div>
+        <div class="heading-actions"><a href="/api/export.csv" class="btn secondary" download>↓ &nbsp;Export CSV</a><button id="refresh" class="btn primary">↻ &nbsp;Refresh data</button></div>
+      </div>
+      <div class="disclaimer"><span class="disclaimer-icon">◇</span><strong>SYNTHETIC DATA</strong><span>This interactive showcase uses simulated sensor values. It is not a safety or operational monitoring system.</span></div>
+      <div class="metrics">
+        <div class="metric"><div class="metric-label">CONNECTED NODES <span>↗</span></div><div class="metric-value" id="stat-nodes">—</div><div class="metric-caption">of 2 simulated devices</div></div>
+        <div class="metric"><div class="metric-label">ACTIVE PROBES <span>⌁</span></div><div class="metric-value" id="stat-probes">—</div><div class="metric-caption">5 sensors per node</div></div>
+        <div class="metric"><div class="metric-label">HIGHEST READING <span>°C</span></div><div class="metric-value" id="stat-peak">—</div><div class="metric-caption">current maximum across probes</div></div>
+        <div class="metric"><div class="metric-label">ACTIVE ALERTS <span>⚑</span></div><div class="metric-value" id="stat-alerts">—</div><div class="metric-caption">threshold + connectivity</div></div>
+      </div>
+      <div class="section-header"><div><div class="eyebrow">LIVE FEED</div><h2>Device monitoring <span class="section-suffix">/ 02 nodes</span></h2></div><div class="update-info">● <span id="last-update">Connecting to local server...</span></div></div>
+      <div id="devices" class="device-grid"><div class="empty">Connecting to telemetry stream…</div></div>
+      <div class="bottom-grid">
+        <section class="panel timeline"><div class="panel-head"><div><div class="eyebrow">SYSTEM EVENTS</div><h2>Event log</h2></div><span class="muted">RECENT</span></div><div id="alerts" class="events"><div class="event-empty">No events recorded yet.</div></div></section>
+        <section class="panel right-panel"><div class="panel-head"><div><div class="eyebrow">ENGINEERING LAB</div><h2>Scenario testing</h2></div><span class="demo-label">DEMO ONLY</span></div>
+          <p>Exercise the alert engine using safe synthetic input. No physical devices are affected.</p>
+          <button id="heat" class="scenario"><span class="scenario-symbol hot">↑</span><span><strong>Heat excursion</strong><small>Raise NODE-A Probe 3 above the critical limit</small></span><span class="scenario-arrow">↗</span></button>
+          <button id="offline" class="scenario"><span class="scenario-symbol off">⌁</span><span><strong>Node connection loss</strong><small>Pause NODE-B telemetry and trigger a stale alarm</small></span><span class="scenario-arrow">↗</span></button>
+          <div class="settings-line"><span>Warning</span><b id="threshold-warn">—</b><span>Critical</span><b id="threshold-critical">—</b></div>
+          <div class="scenario-feedback" id="scenario-feedback" aria-live="polite">Ready for simulation.</div>
+        </section>
+      </div>
+      <footer><span>EDGEWATCH / EDGE-BASED MONITORING DEMONSTRATION</span><span>PYTHON · SQLITE · MQTT ADAPTER · REST API</span></footer>
+    </div>
+  </main>
+</div>
+<script src="/assets/app.js" defer></script>
+</body>
+</html>
