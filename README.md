@@ -55,15 +55,15 @@ cd demo
 python -m http.server 8000
 ```
 
-Open http://127.0.0.1:8000. To deploy with GitHub Pages after review, follow the [demo deployment guide](demo/DEPLOYMENT.md). The Pages deployment workflow is **manual** and has not published this private repository.
+Open http://127.0.0.1:8000. To deploy with GitHub Pages after review, follow the [demo deployment guide](demo/DEPLOYMENT.md). The public demo is deployed through GitHub Pages using a manually triggered deployment workflow.
 
 ## Try it in 60 seconds
 
 **Option A — Python only (no external dependencies):**
 
 ```bash
-git clone https://github.com/mhhassan1/industrial-iot-temperature-monitoring.git
-cd industrial-iot-temperature-monitoring
+git clone https://github.com/mhhassan1/industrial-IOT-temperature-monitoring.git
+cd industrial-IOT-temperature-monitoring
 python -m edgewatch --mode demo
 ```
 
@@ -110,7 +110,7 @@ flowchart TD
 
 The demo uses a built-in synthetic producer. In MQTT mode, decoded `object` fields from **ChirpStack v4** events can enter the same database and alarm state machine. The adapter does *not* implement a manufacturer's proprietary payload decoder, LoRaWAN network server, gateway bridge, or radio configuration.
 
-See [technical architecture](docs/architecture.md), [case study](docs/engineering-case-study.md), and [installation/operation guide](docs/deployment.md).
+See [technical architecture](docs/architecture.md), [case study](docs/engineering-case-study.md), [installation/operation guide](docs/deployment.md), and [portfolio walkthrough](docs/portfolio-walkthrough.md).
 
 ## Optional ChirpStack integration
 
