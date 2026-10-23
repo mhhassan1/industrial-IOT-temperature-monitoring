@@ -27,6 +27,19 @@ It was motivated by hands-on validation of a private two-node wireless temperatu
 | Optional real telemetry adapter | ChirpStack v4 MQTT JSON uplink consumer (requires decoded fields) |
 | Developer experience | Standard-library demo, Docker Compose, unit/API tests, GitHub Actions |
 
+## Interactive browser demo (no installation)
+
+Explore the standalone [`demo/`](demo/) application with simulated temperature sensors, history charts, heat/offline scenarios, configurable thresholds and CSV export. It runs entirely in a visitor's browser; it does **not** connect to actual telemetry, employer infrastructure, or the optional Python backend.
+
+To run locally:
+
+```bash
+cd demo
+python -m http.server 8000
+```
+
+Open http://127.0.0.1:8000. To deploy with GitHub Pages after review, follow the [demo deployment guide](demo/DEPLOYMENT.md). The Pages deployment workflow is **manual** and has not published this private repository.
+
 ## Try it in 60 seconds
 
 **Option A — Python only (no external dependencies):**
