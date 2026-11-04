@@ -6,6 +6,8 @@
 
 [![Python tests](https://github.com/mhhassan1/industrial-IOT-temperature-monitoring/actions/workflows/ci.yml/badge.svg)](https://github.com/mhhassan1/industrial-IOT-temperature-monitoring/actions/workflows/ci.yml) [![Browser demo tests](https://github.com/mhhassan1/industrial-IOT-temperature-monitoring/actions/workflows/demo-ci.yml/badge.svg)](https://github.com/mhhassan1/industrial-IOT-temperature-monitoring/actions/workflows/demo-ci.yml) [![Website deployment](https://github.com/mhhassan1/industrial-IOT-temperature-monitoring/actions/workflows/pages-demo.yml/badge.svg)](https://github.com/mhhassan1/industrial-IOT-temperature-monitoring/actions/workflows/pages-demo.yml)
 
+**More portfolio work:** [Automotive Assembly Throughput Recovery — interactive operations consulting case study](https://automotive-throughput-recovery-mhhassan.mohamad-hassan5655.chatgpt.site) (120-shift synthetic dataset; all modeled financial results are illustrative, not client outcomes).
+
 **Python 3.11+** · **SQLite** · **REST API** · **LoRaWAN/MQTT adapter** · **Docker Compose** · **Automated tests**
 
 ![Synthetic EdgeWatch dashboard](assets/edgewatch-dashboard.png)
